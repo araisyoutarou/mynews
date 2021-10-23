@@ -43,6 +43,32 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             
+                            <!-- Authentication Links -->
+                            {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
+                            @guest
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                            {{-- ログインしていたらユーザー名とログアウトボタンを表示 --}}
+                            @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" rele="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+                                
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    
+                                    onclick="event.preventDefauit();
+                                    
+                                    document.getElementById('logout-from').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    
+                                    <from id="logout-from" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </from>
+                                </div>
+                            </li>
+                            @endguest
                         </ul>
                     </div>
                 </div>
