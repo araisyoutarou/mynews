@@ -32,13 +32,13 @@
                         </ul>
                         @endif
                         <div class="from-group row">
-                            <label class="col-md-2">タイトル</label>
+                            <label class="col-md-2" for="title">タイトル</label>
                             <div class="col-md-10">
                                 <input type="text" class="from-control" name="title" value="{{ old('title') }}">
                             </div>
                         </div>
                         <div class="from-group row">
-                            <label class="col-md-2">本文</label>
+                            <label class="col-md-2" for="body">本文</label>
                             <div class="col-md-10">
                                 <textarea class="from-control" name="body" rows="20">{{ old('body') }}</textarea>
                             </div>
