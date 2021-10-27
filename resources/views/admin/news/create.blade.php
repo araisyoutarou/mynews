@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-md-8 mx-auto">
                     <h2>ニュース新規作成</h2>
-                    <from action="{{ action('Admin\NewsController@create') }}" method="post" enctype="multipart/from-data">
+                    <form action="{{ action('Admin\NewsController@create') }}" method="post" enctype="multipart/form-data">
                         
                         @if (count($errors) > 0)
                         <ul>
@@ -31,19 +31,19 @@
                             @endforeach
                         </ul>
                         @endif
-                        <div class="from-group row">
+                        <div class="form-group row">
                             <label class="col-md-2" for="title">タイトル</label>
                             <div class="col-md-10">
-                                <input type="text" class="from-control" name="title" value="{{ old('title') }}">
+                                <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                             </div>
                         </div>
-                        <div class="from-group row">
+                        <div class="form-group row">
                             <label class="col-md-2" for="body">本文</label>
                             <div class="col-md-10">
-                                <textarea class="from-control" name="body" rows="20">{{ old('body') }}</textarea>
+                                <textarea class="form-control" name="body" rows="20">{{ old('body') }}</textarea>
                             </div>
                         </div>
-                        <div class="from-group row">
+                        <div class="form-group row">
                             <label class="col-md-2">画像</label>
                             <div class="col-md-10">
                                 <input type="file" class="form-control-file" name="image">
@@ -51,7 +51,7 @@
                         </div>
                         {{ csrf_field() }}
                         <input type="submit" class="btn btn-primary" value="更新">
-                    </from>
+                    </form>
                 </div>
             </div>
         </div>
