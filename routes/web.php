@@ -15,14 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-    Route::get('news/create', 'Admin\NewsController@add');
+Route::group(['prefix' => 'admin', 'middleware'=>'auth'], function() {
+  
     Route::get('/profile/create', 'Admin\ProfileController@add');
     Route::get('/profile/edit', 'Admin\ProfileController@edit');
-    Route::post('news/create', 'Admin\NewsController@create');
+    Route::get('profile', 'Admin\ProfileController@index');
+    Route::get('profile/delete', 'Admin\ProfileController@delete');
     Route::post('/profile/create', 'Admin\ProfileController@create');
     Route::post('/profile/edit', 'Admin\ProfileController@update');
-    Route::get('news', 'Admin\NewsController@index')->middleware('auth');
+    
+    // news
+    Route::post('news/create', 'Admin\NewsController@create');
+    Route::get('news/create', 'Admin\NewsController@add');
+    Route::get('news', 'Admin\NewsController@index');
+    Route::get('news/edit', 'Admin\NewsController@edit');
+    Route::post('news/edit', 'Admin\NewsController@update');
+    Route::get('news/delete', 'Admin\NewsController@delete');
 });
 
 Auth::routes();
